@@ -137,6 +137,7 @@ class FanXingJieXi2Handler(web.RequestHandler):
 #首先在config里面配置template_path目录
 class HtmlHandler(web.RequestHandler):
     def get(self):
+        # 默认找的是template_path目录下的
         self.render('index.html')
 
 #加载html页面，登录页面

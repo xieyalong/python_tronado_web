@@ -66,8 +66,8 @@ class MyAppliction(web.Application):
             #请求来的东西 都可以获取
             web.url(r'/requestInfo', index.RequestInfoHandler),
             #上传页面
-            web.url(r'/upFile.html', index.UPFileHandler),
-            web.url(r'/upFile', index.UPFileHandler),
+            web.url(r'/upfile.html', index.UPFileHandler),
+            web.url(r'/upfile', index.UPFileHandler),
             #刷新缓冲区，关闭本次请求通道
             web.url(r'/huanCunQu', index.HuanCunQuHandler),
             #请求顺序
