@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+post的from表单使用get_query_argument是无效的，
+只能使用get_argument，get_body_argument，self.request.body能获取到
+ action="/query_argument" method="post"
+-->
+<form action="/requestInfo" method="post">
+    用户名：<input type="name" name="name"/>
+    密码：<input type="pwd"  name="pwd"/>
+    <input type="submit" value="登录"/>
+</form>
+</body>
+</html>
