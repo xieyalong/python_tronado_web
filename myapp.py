@@ -72,6 +72,8 @@ class MyAppliction(web.Application):
             web.url(r'/huanCunQu', index.HuanCunQuHandler),
             #请求顺序
             web.url(r'/jieKouShunXu', index.JieKouShunXuHander),
+            # 模板
+            web.url(r'/moban.html', home.HomeMoBanHandler),
 
         ]
         # 映射路由
