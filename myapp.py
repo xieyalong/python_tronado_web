@@ -88,6 +88,7 @@ class MyAppliction(web.Application):
             #删除
             web.url(r'/delete', db.deleteHandler),
             #联合查询
+            #http://localhost:8000/findCateById
             web.url(r'/findCateById', db.findCateByIdHandler),
 
 
