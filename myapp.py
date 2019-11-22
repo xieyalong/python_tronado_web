@@ -82,7 +82,9 @@ class MyAppliction(web.Application):
             #StaticFileHandler是系统提供的，专门给静态文件提供的一个路由
             # 要放在最后，因为(.*)$匹配了所欲
             #告诉StaticFileHandler找静态文件去“static/html”下面找
-            # (r'/index', web.StaticFileHandler,{'path':os.path.join(config.base_dirs+'/static/html'),'default_filename':'index.html'}),
+            #默认http://localhost:8000/=index.html,
+            # 如果写http://localhost:8000/admin.html，去招admin.html
+            # (r'/', web.StaticFileHandler,{'path':os.path.join(config.base_dirs+'/static/html'),'default_filename':'index.html'}),
         ]
         # print('ospath='+os.path.join(config.base_dirs+'/static/html'))
         # 映射路由
