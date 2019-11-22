@@ -49,7 +49,8 @@ mysql={
     'host':'127.0.0.1',
     'user':'root',
     'password':'',
-    'database':'jundui',
+    # 'database':'jundui',
+    'database':'omo_military',
     'charset':'utf8',
     'port':3306
 }
