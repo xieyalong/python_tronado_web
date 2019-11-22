@@ -78,7 +78,7 @@ class MyAppliction(web.Application):
 
 
 
-            #默认index.html路径
+            #默认index.html路径，这里不知道为啥找不到index.html,还是第一行使用自己写的默认路由好用
             #StaticFileHandler是系统提供的，专门给静态文件提供的一个路由
             # 要放在最后，因为(.*)$匹配了所欲
             #告诉StaticFileHandler找静态文件去“static/html”下面找
