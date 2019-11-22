@@ -5,7 +5,7 @@ from tornado import  web,ioloop,httpserver
 from views import index,home
 #配置文件
 import config
-
+import  os
 #继承Application，来配置路由
 class MyAppliction(web.Application):
     #重写父类的构造函数
@@ -16,7 +16,8 @@ class MyAppliction(web.Application):
             # 一个路由包含get和post请求，但是得重写post 和get两个函数
             (r'/', index.IndexHandler),
             #请求路径:http://localhost:8080/index2
-            (r'/index2', index.IndexHandler2),
+            #{'a':'','b':''} 传递是死的请求参数,但必须有initialize来接收
+            (r'/index2', index.IndexHandler2,{'a':'','b':''}),
             # http: // localhost: 8080 / home
             (r'/home', home.HomeHandler),
             #多层或者根据模块起名字 http://localhost:8080/home/list/
@@ -75,7 +76,15 @@ class MyAppliction(web.Application):
             # 模板-jstl
             web.url(r'/moban.html', home.HomeMoBanHandler),
 
+
+
+            #默认index.html路径
+            #StaticFileHandler是系统提供的，专门给静态文件提供的一个路由
+            # 要放在最后，因为(.*)$匹配了所欲
+            #告诉StaticFileHandler找静态文件去“static/html”下面找
+            # (r'/index', web.StaticFileHandler,{'path':os.path.join(config.base_dirs+'/static/html'),'default_filename':'index.html'}),
         ]
+        # print('ospath='+os.path.join(config.base_dirs+'/static/html'))
         # 映射路由
         #C:\pythonWorkspace\tornaTest02\static
         # print('>]项目目录路径=',config.settings['static_path'])

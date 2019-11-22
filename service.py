@@ -2,6 +2,7 @@
 
 #导入tornado 各个模块
 from tornado import  web,ioloop,httpserver
+import tornado
 #引入配置文件
 import  config
 #引入路由模块

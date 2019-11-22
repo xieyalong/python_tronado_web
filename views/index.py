@@ -25,8 +25,11 @@ class IndexHandler(web.RequestHandler):
 #用get发送就是get请求
 #用post请求就是post请求
 class IndexHandler2(web.RequestHandler):
+    def initialize(self,a,b):
+        pass
+
     # get请求
-    def get(self,*args,**kwargs):
+    def get(self):
         self.write('index2页面get请求')
 
     def post(self):
