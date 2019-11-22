@@ -2,7 +2,7 @@
 #导入tornado 各个模块
 from tornado import  web,ioloop,httpserver
 #引入视图
-from views import index,home
+from views import index,home,db
 #配置文件
 import config
 import  os
@@ -75,6 +75,16 @@ class MyAppliction(web.Application):
             web.url(r'/jieKouShunXu', index.JieKouShunXuHander),
             # 模板-jstl
             web.url(r'/moban.html', home.HomeMoBanHandler),
+
+
+            #查询一条和多条
+            web.url(r'/findUserById',db.findUserById),
+            #插入
+            web.url(r'/insert', db.insertHandler),
+            #修改
+            web.url(r'/update', db.updateHandler),
+            #删除
+            web.url(r'/delete', db.deleteHandler),
 
 
 
