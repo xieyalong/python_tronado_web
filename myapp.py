@@ -72,7 +72,7 @@ class MyAppliction(web.Application):
             web.url(r'/huanCunQu', index.HuanCunQuHandler),
             #请求顺序
             web.url(r'/jieKouShunXu', index.JieKouShunXuHander),
-            # 模板
+            # 模板-jstl
             web.url(r'/moban.html', home.HomeMoBanHandler),
 
         ]

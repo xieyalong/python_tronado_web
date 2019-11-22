@@ -37,7 +37,10 @@ settings={
     #配置静态文件目录,相对路径，C:\pythonWorkspace\tornaTest02\static
     #尽量避免使用绝对路径
     'static_path':os.path.join(base_dirs,'static'),
-    #设置母版目录，
+    #设置母版（jsp-jstl）目录，
+    ## 没有upfile_path，#Application里面没有upfile_path参数
     'template_path':os.path.join(base_dirs,'templates'),
-    # 没有upfile_path，#Application里面没有upfile_path参数
+
+    #关闭自动转义
+    'autoescape':None
 }
