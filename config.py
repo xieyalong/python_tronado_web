@@ -44,3 +44,12 @@ settings={
     #关闭自动转义
     'autoescape':None,
 }
+
+mysql={
+    'host':'127.0.0.1',
+    'user':'root',
+    'password':'',
+    'database':'jundui',
+    'charset':'utf8',
+    'port':3306
+}
