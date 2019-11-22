@@ -87,6 +87,7 @@ class MyAppliction(web.Application):
             web.url(r'/update', db.updateHandler),
             #删除
             web.url(r'/delete', db.deleteHandler),
+            web.url(r'/findCateById', db.findCateByIdHandler),
 
 
 
