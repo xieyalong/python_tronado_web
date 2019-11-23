@@ -1,5 +1,4 @@
-
-from peewee_models import  models
+from shujuku.peewee_models import models
 from peewee_migrate import Router
 
 router = Router(models.db)

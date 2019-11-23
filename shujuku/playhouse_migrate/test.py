@@ -1,7 +1,5 @@
 
 from playhouse.migrate import *
-from peewee_models import  models
-
 
 # pip install Postgres
 db = MySQLDatabase("xyl_test", host="127.0.0.1", user="root", passwd="",port=3306,charset='utf8')
