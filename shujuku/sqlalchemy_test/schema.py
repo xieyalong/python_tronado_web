@@ -7,7 +7,7 @@
 from sqlalchemy import event
 from sqlalchemy.testing import  config
 from sqlalchemy.testing import exclusions
-from sqlalchemy.testing import schema
+# from sqlalchemy.testing import schema
 
 
 __all__ = ["Table", "Column"]
@@ -72,8 +72,8 @@ def Column(*args, **kw):
 
     test_opts = {k: kw.pop(k) for k in list(kw) if k.startswith("test_")}
 
-    # if not config.requirements.foreign_key_ddl.enabled_for_config(config):
-    #     args = [arg for arg in args if not isinstance(arg, schema.ForeignKey)]
+    if not config.requirements.foreign_key_ddl.enabled_for_config(config):
+        args = [arg for arg in args if not isinstance(arg, schema.ForeignKey)]
 
     col = schema.Column(*args, **kw)
     if test_opts.get("test_needs_autoincrement", False) and kw.get(
