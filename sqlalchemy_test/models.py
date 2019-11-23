@@ -19,7 +19,7 @@ class XylOrder(Base):
     # nullable：是否可以为null,如果可以为nul就不用写
     #unique = True 是否唯一
     # name=Column('order_name',String(200),nullable=False)
-    title = Column(String,foreign_key_ddl=(''))
+    title = Column(String)
     # age=Column(Integer)
     # price = Column(Float)
     # update_time=Column(DateTime,nullable=False)
