@@ -2,7 +2,7 @@
 from tornado import  web
 import json
 #导入包
-from  mysql_util.dbUtil import DBMysql
+from  utils.dbUtil import DBMysql
 
 
 #查询1条和多条
