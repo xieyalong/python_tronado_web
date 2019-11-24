@@ -1,8 +1,7 @@
-from sqlalchemy import Integer, String, Float, Boolean, DateTime, Text, INTEGER
+from sqlalchemy import Integer, String, Float, Boolean, DateTime, Text, INTEGER, MetaData
 from sqlalchemy.ext.declarative import  declarative_base
-# from sqlalchemy.testing.schema import Column
-from shujuku.sqlalchemy_test.schema import Column
-from sqlalchemy import create_engine
+from sqlalchemy.testing.schema import Column
+from sqlalchemy import create_engine,ForeignKey
 
 
 engine=create_engine('mysql+pymysql://root:@127.0.0.1:3306/xyl_test',
@@ -19,13 +18,20 @@ print('conn=',conn)
 result = conn.execute("select 1")
 print('======',result.fetchone())
 
-
 Base = declarative_base(engine)
 
-class Article(Base):
-    __tablename__ = "article"
-    id = Column(Integer,primary_key=True,autoincrement=True)
-    title = Column(String(50),nullable=False)
 
 
-Base.metadata.create_all()
+
+
+# class Article(Base):
+#     __tablename__ = "article"
+#     id = Column(Integer,primary_key=True,autoincrement=True)
+#     title = Column(String(50),nullable=False)
+#     uid = Column(Integer, ForeignKey("user.id"))
+
+
+
+
+if __name__ == '__main__':
+    Base.metadata.create_all()
