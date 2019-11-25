@@ -1,17 +1,15 @@
 
-# from  utils.dbUtil import DBMysql
-#
-# res=DBMysql.findSingle('select * from xyl_user')
-# print(res)
+from  utils import strUtil
+class User():
+    name=''
 
-str=None
-#null 判断
-if str==None:
-    print('null')
+u=User()
+u.name='aaa'
 
-#!=null 判断
-if str !=None:
-    print('null')
+map={'A':'a'}
+print('wwww=',map.get('b'))
+print(strUtil.classToJson(u))
+
 
 
 

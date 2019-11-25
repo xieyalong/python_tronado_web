@@ -9,7 +9,7 @@ from shujuku.db_sqlalchemy.conn import  session
 #where语法
 from sqlalchemy import  not_,or_,and_,text
 from sqlalchemy.sql import func
-
+from utils import strUtil
 
 #添加一条
 def add():
@@ -88,6 +88,9 @@ def find():
     #“all()”的使用
     list=conn.session.query(Cate).all()
     print('查询所有 size=', len(list))
+    print('查询所有 size=', strUtil.listClasToJson(list))
+    # for item in list:
+    #     print('map=',strUtil.classToJson(item))
 
 
 # -----------查询一条-----------------------

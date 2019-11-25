@@ -37,18 +37,43 @@ def tupleToList(obj):
     return list(obj)
 
 
-# #实体类转json
+
+
+
+#实体类转json
 # class User():
 #     name=''
-#     age=0
-#     id=0
+#
 # u=User()
-# u.name='张三'
-# u.age=5
-# u.id=45
-# print(classToJson(u))
+# u.name='aaa'
+#
+# map={'A':'a'}
+# print('wwww=',map.get('b'))
+# print(strUtil.classToJson(u))
+
 def classToJson(objClass):
-    return  json.dumps(obj=objClass.__dict__,ensure_ascii=False)
+    map = objClass.__dict__
+    map = dict(map)
+    #从数据库查询，去掉_sa_instance_state
+    if None!=map.get('_sa_instance_state'):
+        del map['_sa_instance_state']
+        map = dict(map)
+
+    str_ = json.dumps(map,ensure_ascii=False)
+    return str_
+
+#实体bean list转成json
+def  listClasToJson(listData):
+    list=[]
+    for item in listData:
+        map = item.__dict__
+        map = dict(map)
+        # 从数据库查询，去掉_sa_instance_state
+        if None != map.get('_sa_instance_state'):
+            del map['_sa_instance_state']
+            map = dict(map)
+        list.append(map)
+    return  json.dumps(list,ensure_ascii=False)
 
 class Dict(dict):
     __setattr__ = dict.__setitem__
