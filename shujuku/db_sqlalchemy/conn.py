@@ -20,7 +20,7 @@ db_url='mysql+pymysql://root:@127.0.0.1:3306/omo_military'
 #建立连接
 engine=create_engine(db_url,
                      encoding='utf-8',
-                     echo=True,#输出操作语句
+                     # echo=True,#输出操作语句
                      max_overflow=5,#允许在增加5个，一共是10个
                      pool_size=5,#连接池大小
                      pool_timeout=30,#池中没有连接等待的时间,否则报错

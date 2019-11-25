@@ -6,6 +6,7 @@
 from sqlalchemy import Column,Integer,String,DateTime,Float,Text,Index
 #获取数据库连接
 from shujuku.db_sqlalchemy import conn
+from shujuku.db_sqlalchemy.conn import Base
 
 from datetime import datetime
 
@@ -76,6 +77,16 @@ class Cate(conn.Base):
     state=Column(Integer)
 
 
+class Resource(Base):
+    # 映射数据库表名
+    __tablename__ = 'omo_resource'
+    # 主键，自增
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    resource_name = Column(String(200))
+    cate_id=Column(Integer)
+    content=Column(Text)
+    type = Column(Integer)
+
 
 
 # {
@@ -106,4 +117,25 @@ class Cate(conn.Base):
 
 
 
+# {
+# "select * from omo_resource LIMIT  1": [
+# 	{
+# 		"id" : 1,
+# 		"cate_id" : 1,
+# 		"type" : 1,
+# 		"resource_name" : "颈椎侧方稳定性训练",
+# 		"duration" : 35,
+# 		"state" : 0,
+# 		"code" : "ZW-XL-42",
+# 		"url" : "https:\/\/img00.yuanxinkangfu.com\/avthumb2\/file\/resource\/201811\/1541386938511.mp4",
+# 		"url1" : null,
+# 		"arr_url" : null,
+# 		"content" : "[{\"url\":\"https:\/\/img00.yuanxinkangfu.com\/file\/resource\/20189\/1536746229387.jpeg\",\"des\":\"定位不清\"},{\"url\":\"http:\/\/img00.sun-hc.com\/file\/resource\/20186\/1529574210070.jpeg\",\"des\":\"注意事项：在治疗过程中，应及时询问用户的适应程度，如出现过烫，可再垫层毛巾，注意防止烫伤。\"}]",
+# 		"cover_img" : "https:\/\/img00.yuanxinkangfu.com\/file\/resource\/201811\/1543461141561.jpeg",
+# 		"description" : "<p>1、侧卧位，下肢屈髋屈膝，侧方耳垂、肩峰、股骨大转子在一条直线。&nbsp;<\/p><p>2、上方手叉腰防止上斜方肌代偿，维持至出现抖动即放松。<\/p>",
+# 		"attentions" : "抬头速度不宜过快。",
+# 		"created" : 1525673982,
+# 		"updated" : 1545616681
+# 	}
+# ]}
 
