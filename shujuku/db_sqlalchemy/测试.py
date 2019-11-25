@@ -88,7 +88,7 @@ def find():
     #“all()”的使用
     list=conn.session.query(Cate).all()
     print('查询所有 size=', len(list))
-    print('查询所有 size=', strUtil.listClasToJson(list))
+    print('查询所有 size=', strUtil.listClassToJson(list))
     # for item in list:
     #     print('map=',strUtil.classToJson(item))
 

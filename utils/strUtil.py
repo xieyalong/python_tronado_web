@@ -63,7 +63,7 @@ def classToJson(objClass):
     return str_
 
 #实体bean list转成json
-def  listClasToJson(listData):
+def  listClassToJson(listData):
     list=[]
     for item in listData:
         map = item.__dict__
