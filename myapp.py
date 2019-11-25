@@ -91,8 +91,10 @@ class MyAppliction(web.Application):
             #http://localhost:8000/findCateById
             web.url(r'/findCateById', db.findCateByIdHandler),
 
+            #使用sqlalchemy框架操作数据库-创建所有表
             web.url(r'/creteTable', db_sqlalchemy.creteTableHandler),
-
+            # 使用sqlalchemy框架操作数据库-删除所有表
+            web.url(r'/deleteTable', db_sqlalchemy.deleteTableHandler),
 
             #默认index.html路径，这里不知道为啥找不到index.html,还是第一行使用自己写的默认路由好用
             #StaticFileHandler是系统提供的，专门给静态文件提供的一个路由

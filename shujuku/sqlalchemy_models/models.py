@@ -8,9 +8,14 @@ from sqlalchemy import Column,Integer,String
 from shujuku.sqlalchemy_models import conn
 
 
-#创建表
+#创建所有表，用的也很少，基本都是对模型的增伤改查
 def create_db():
     conn.Base.metadata.create_all(bind=conn.engine)
+
+#删除所有模型映射表,基本上用不到
+def delete_db():
+    conn.Base.metadata.drop_all(bind=conn.engine)
+
 
 
 #数据库表模型
