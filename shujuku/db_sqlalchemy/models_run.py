@@ -83,8 +83,7 @@ def update2():
 def find():
     # https://www.cnblogs.com/robertx/p/11122851.html
     list=conn.session.query(Cate).all()
-    # print('查询所有',list)
-    print('查询所有2=====', list.__dict__)
+    print('查询所有', len(list))
 
 
 
