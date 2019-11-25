@@ -81,11 +81,7 @@ def update2():
     conn.session.commit()
 
 def find():
-    cate=Cate()
-    cate.cate_name='aaa'
-    cate.parent_id=90
-    print('查询所有1=====',cate.__dict__)
-
+    # https://www.cnblogs.com/robertx/p/11122851.html
     list=conn.session.query(Cate).all()
     # print('查询所有',list)
     print('查询所有2=====', list.__dict__)
