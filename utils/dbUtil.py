@@ -6,7 +6,7 @@ import  config
 
 #数据库在增删改后如果不关闭游标和数据库，是查不出来的
 
-# db = pymysql.connect(host='39.107.26.185',
+# db_sqlalchemy = pymysql.connect(host='39.107.26.185',
 #                              user='xieyalong',
 #                              password='xieyalong',
 #                              database='omo_military',

@@ -77,10 +77,10 @@ def runQql(db,sql,fileName):
     except Exception as e:
         raise e
     # finally:
-        # db.close()  # 关闭连接
+        # db_sqlalchemy.close()  # 关闭连接
 
 
-# def zxc(db,sql,fileName):
+# def zxc(db_sqlalchemy,sql,fileName):
 #     threading.Thread(target=run_bbb, name='runThread', args=('给子进程传递的数据',))
 #     pass
 
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         # print(sql)
         fileName=item+'.json'
         runQql(db, sql,fileName)
-        # t = threading.Thread(target=runQql, name=fileName, args=(db,sql, fileName,))
+        # t = threading.Thread(target=runQql, name=fileName, args=(db_sqlalchemy,sql, fileName,))
         # # 启动
         # t.start()
     db.close()

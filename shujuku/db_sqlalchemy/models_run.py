@@ -3,8 +3,8 @@
 
 import  json
 #导入模型,连接
-from shujuku.db import models,conn
-from shujuku.db.models import Student
+from shujuku.db_sqlalchemy import models,conn
+from shujuku.db_sqlalchemy.models import Student
 
 #where语法
 from sqlalchemy import  not_,or_,and_
@@ -82,7 +82,7 @@ def delete2():
 
 #修改部分字段,推荐使用这个
 def update1():
-    stu = conn.session.query(models.Student).filter(models.Student.s_name == '李四').first()
+    stu = conn.session.query(models.Student).filter(models.Student.s_name == '李四2').first()
     if stu !=None:
         stu.s_name='张三'
         stu.title = '李四修改为张三，使用add方法修改'
@@ -113,14 +113,14 @@ def find():
 
     #查询第一条数据
     stu = conn.session.query(models.Student).filter(models.Student.s_name == '李四8').first()
-    print('stu2=', stu.s_name)
+    print('stu2=', stu)
 
 
 
 if __name__ == '__main__':
 
     ## 创建所有表
-    # models.create_db()
+    models.create_db()
     ## 删除所有表
     # models.delete_db()
     # add()
@@ -128,5 +128,5 @@ if __name__ == '__main__':
     # delete()
     # delete2()
     # update1()
-    update2()
+    # update2()
     pass

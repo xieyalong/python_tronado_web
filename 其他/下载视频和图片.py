@@ -124,7 +124,7 @@ def downloadVideo(tableName):
         print('错误 url=',url_video,',size=',len(url_video))
         raise e
     # finally:
-        # db.close()  # 关闭连接
+        # db_sqlalchemy.close()  # 关闭连接
 ###########################################################
 
 if __name__ == "__main__":

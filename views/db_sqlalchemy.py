@@ -3,7 +3,7 @@
 
 from tornado.web import  RequestHandler
 #引入模型，数据库连接
-from shujuku.db import models,conn
+from shujuku.db_sqlalchemy import models,conn
 
 
 #创建所有表
