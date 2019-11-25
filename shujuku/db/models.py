@@ -24,13 +24,20 @@ class Student(conn.Base):
     # 主键，自增
     id=Column(Integer,primary_key=True,autoincrement=True)
     #唯一,不能为null，
-    s_name=Column(String(20),unique=True,nullable=False)
+    # s_name=Column(String(20),unique=True,nullable=False)
+    s_name = Column(String(20),  nullable=False)
     #默认18
     s_age=Column(Integer,default=18)
     #
     title=Column(String,default='title')
 
-
+    # #返回字符串
+    # def __repr__(self):
+    #     pass
+    #
+    # # 返回字符串
+    # def __set__(self, instance, value):
+    #     pass
 
 
 
