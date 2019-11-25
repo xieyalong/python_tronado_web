@@ -4,7 +4,7 @@
 import  json
 #导入模型,连接
 from shujuku.db_sqlalchemy import models,conn
-from shujuku.db_sqlalchemy.models import Student
+from shujuku.db_sqlalchemy.models import Student,Cate
 
 #where语法
 from sqlalchemy import  not_,or_,and_
@@ -60,25 +60,6 @@ def delete():
     except Exception as e:
         print('e=',e)
 
-#使用对象删除
-def delete2():
-    try:
-        # 查询数据-获取对象
-        stu = conn.session.query(models.Student).filter(models.Student.s_name == '李四8')
-        print('delete-stu=',stu)
-        if stu !=None:
-            #删除
-            i=stu.delete()
-            print('i=', i)
-            if int(i)>0:
-                print('删除成功')
-            else:
-                print('删除失败')
-        else:
-            print('数据不存在')
-    except Exception as e:
-        print('e=',e)
-
 
 #修改部分字段,推荐使用这个
 def update1():
@@ -100,31 +81,42 @@ def update2():
     conn.session.commit()
 
 def find():
-    #sqlalchemy框架原生写法
-    stu= conn.session.query(models.Student).filter(models.Student.s_name=='李四').all()
+    cate=Cate()
+    cate.cate_name='aaa'
+    cate.parent_id=90
+    print('查询所有1=====',cate.__dict__)
 
-    print('stu=',stu)
-    #转json错误
-    # print('stu=', json.dumps(stu))
+    list=conn.session.query(Cate).all()
+    # print('查询所有',list)
+    print('查询所有2=====', list.__dict__)
 
-    #直接写变量名和filter功能一样
-    # stu = conn.session.query(models.Student).filter_by(s_name == '李四').all()
-    # print('stu=', stu)
 
-    #查询第一条数据
-    stu = conn.session.query(models.Student).filter(models.Student.s_name == '李四8').first()
-    print('stu2=', stu)
+
+    # #sqlalchemy框架原生写法
+    # stu= conn.session.query(models.Student).filter(models.Student.s_name=='李四').all()
+    #
+    # print('all=',stu)
+    # #转json错误
+    # # print('stu=', json.dumps(stu))
+    #
+    # #查询第一条数据
+    # stu = conn.session.query(models.Student).filter(models.Student.s_name == '李四8').first()
+    # print('first=', stu)
+
+
+
+
 
 
 
 if __name__ == '__main__':
 
     ## 创建所有表
-    models.create_db()
+    # models.create_db()
     ## 删除所有表
     # models.delete_db()
     # add()
-    # find()
+    find()
     # delete()
     # delete2()
     # update1()

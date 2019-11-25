@@ -64,8 +64,45 @@ class xylUser(conn.Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(20), nullable=False,name='xyl_name' )
 
+class Cate(conn.Base):
+    # 映射数据库表名
+    __tablename__ = 'omo_pe_cate'
+    # 主键，自增
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    cate_name = Column(Text)
+    parent_id=Column(Integer)
+    img_url=Column(Text)
+    type=Column(Integer)
+    state=Column(Integer)
 
 
+
+
+# {
+# "select * from omo_pe_cate LIMIT 1": [
+# 	{
+# 		"id" : 1,
+# 		"type" : 1,
+# 		"cate_name" : "颈部",
+# 		"img_url" : "https:\/\/img00.yuanxinkangfu.com\/file\/resource\/20191\/1547024518714.png",
+# 		"active_img_url" : "",
+# 		"large_img_url" : "",
+# 		"show_h5_page" : 0,
+# 		"show_human_pic" : 0,
+# 		"cate_sort" : 0,
+# 		"parent_id" : 0,
+# 		"state" : 0,
+# 		"show_score" : 0,
+# 		"score_operator_type" : null,
+# 		"score_init" : null,
+# 		"score_desc" : null,
+# 		"cate_type" : 1,
+# 		"desc" : "",
+# 		"first_question" : 316,
+# 		"created" : 1525343421,
+# 		"updated" : 1536667654
+# 	}
+# ]}
 
 
 

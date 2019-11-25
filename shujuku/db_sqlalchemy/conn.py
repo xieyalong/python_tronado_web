@@ -14,7 +14,8 @@ from sqlalchemy.ext.declarative import  declarative_base
 from sqlalchemy.orm import sessionmaker
 
 #连接数据库
-db_url='mysql+pymysql://root:@127.0.0.1:3306/xyl_test'
+# db_url='mysql+pymysql://root:@127.0.0.1:3306/xyl_test'
+db_url='mysql+pymysql://root:@127.0.0.1:3306/jundui'
 #建立连接
 engine=create_engine(db_url,
                      encoding='utf-8',
