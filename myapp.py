@@ -2,7 +2,7 @@
 #导入tornado 各个模块
 from tornado import  web,ioloop,httpserver
 #引入视图
-from views import index,home,db
+from views import index,home,db,db_sqlalchemy
 #配置文件
 import config
 import  os
@@ -91,6 +91,7 @@ class MyAppliction(web.Application):
             #http://localhost:8000/findCateById
             web.url(r'/findCateById', db.findCateByIdHandler),
 
+            web.url(r'/creteTable', db_sqlalchemy.creteTableHandler),
 
 
             #默认index.html路径，这里不知道为啥找不到index.html,还是第一行使用自己写的默认路由好用
