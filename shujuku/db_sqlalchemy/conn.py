@@ -15,7 +15,8 @@ from sqlalchemy.orm import sessionmaker
 
 #连接数据库
 # db_url='mysql+pymysql://root:@127.0.0.1:3306/xyl_test'
-db_url='mysql+pymysql://root:@127.0.0.1:3306/jundui'
+# db_url='mysql+pymysql://root:@127.0.0.1:3306/jundui'
+db_url='mysql+pymysql://root:@127.0.0.1:3306/omo_military'
 #建立连接
 engine=create_engine(db_url,
                      encoding='utf-8',
@@ -34,6 +35,9 @@ dbSession=sessionmaker(bind=engine)
 #增删改查操作数据
 session=dbSession()
 
+
+# 关闭会话
+# db_session.close()
 
 
 

@@ -5,6 +5,7 @@ import  json
 #导入模型,连接
 from shujuku.db_sqlalchemy import models,conn
 from shujuku.db_sqlalchemy.models import Student,Cate
+from shujuku.db_sqlalchemy.conn import  session
 
 #where语法
 from sqlalchemy import  not_,or_,and_
@@ -82,9 +83,39 @@ def update2():
 
 def find():
     # https://www.cnblogs.com/robertx/p/11122851.html
-    list=conn.session.query(Cate).all()
-    print('查询所有', len(list))
 
+
+    #“all()”的使用
+    list=conn.session.query(Cate).all()
+    print('查询所有 size=', len(list))
+
+    # “filter()”条件筛查
+    #一个条件的筛查，获取所有
+    # Cate.id=类直接调用参数,用的是>=,==等
+    list = session.query(Cate).filter(Cate.id >= 2).all()
+    print('条件筛查 =', len(list))
+
+
+
+    #“first()”获取第一条数据
+    cate = session.query(Cate).filter(Cate.id >= 2).first()
+    print('取出一条数据 cate=',cate.cate_name)
+
+    #“and_”使用
+    _and=and_(Cate.id > 3, Cate.cate_name == '颈部',Cate.type==1)
+    ret = session.query(Cate).filter(_and).all()
+    print('and使用 size=',len(ret))
+
+    #“or_”使用
+    _or=or_(Cate.id > 3, Cate.cate_name == '颈部',Cate.cate_name=='肩部',Cate.type==1)
+    ret = session.query(Cate).filter(_or).all()
+    print('or使用 size=', len(ret))
+
+    # 3. 查询数据,指定查询数据列加入别名
+    #User.name.label('username')username=数据库字段，name=实体类字段
+    # r3 = session.query(User.name.label('username'), User.id).firset()
+    ret = session.query(Cate.cate_name, Cate.id,Cate.parent_id).all()
+    print('指定列名查询=',len(ret))
 
 
     # #sqlalchemy框架原生写法
