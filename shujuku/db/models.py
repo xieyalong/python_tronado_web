@@ -1,11 +1,11 @@
 
-#说明：模型
+#说明：所有模型
 
 
 #创建表字段信息
 from sqlalchemy import Column,Integer,String
 #获取数据库连接
-from shujuku.sqlalchemy_models import conn
+from shujuku.db import conn
 
 
 #创建所有表，用的也很少，基本都是对模型的增伤改查
@@ -27,8 +27,10 @@ class Student(conn.Base):
     s_name=Column(String(20),unique=True,nullable=False)
     #默认18
     s_age=Column(Integer,default=18)
-    #默认18
+    #
     title=Column(String,default='title')
+
+
 
 
 

@@ -1,4 +1,6 @@
 
+#原生数据库操作，自己写的dbUtil工具
+
 from tornado import  web
 import json
 #导入包
