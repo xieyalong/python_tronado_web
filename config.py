@@ -49,8 +49,8 @@ mysql={
     'host':'127.0.0.1',
     'user':'root',
     'password':'',
-    # 'database':'jundui',
-    'database':'omo_military',
+    'db1':'jundui',#家里的数据库
+    'db2':'omo_military',#公司的数据局
     'charset':'utf8',
     'port':3306
 }

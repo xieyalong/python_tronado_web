@@ -93,13 +93,18 @@ class MyAppliction(web.Application):
 
             #使用sqlalchemy框架操作数据库-创建所有表 http://localhost:8000/creteTable
             web.url(r'/creteTable', db_sqlalchemy.creteTableHandler),
-            # 使用sqlalchemy框架操作数据库-删除所有表
+            # deleteAll-删除所有表
             web.url(r'/deleteTable', db_sqlalchemy.deleteTableHandler),
-            # 使用sqlalchemy框架操作数据库-增加一条
+            # add操作
             web.url(r'/addStudent', db_sqlalchemy.addStudentHandler),
-
-            # 使用sqlalchemy框架操作数据库-增加多条
+            # addAll操作
             web.url(r'/addAllStudent', db_sqlalchemy.addAllStudentHandler),
+            #update操作
+            web.url(r'/update', db_sqlalchemy.UpdateHandler),
+            # update操作
+            web.url(r'/update', db_sqlalchemy.UpdateHandler),
+            #各种查询
+            web.url(r'/find', db_sqlalchemy.FindHandler),
 
             #默认index.html路径，这里不知道为啥找不到index.html,还是第一行使用自己写的默认路由好用
             #StaticFileHandler是系统提供的，专门给静态文件提供的一个路由

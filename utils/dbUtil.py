@@ -43,7 +43,7 @@ class DBMysql():
         DBMysql.connet(host=config.mysql['host'],
                        user=config.mysql['user'],
                        password=config.mysql['password'],
-                       database=config.mysql['database'],
+                       database=config.mysql['db1'],
                        charset=config.mysql['charset'],
                        port=config.mysql['port'])
 
