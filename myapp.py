@@ -3,6 +3,7 @@
 from tornado import  web,ioloop,httpserver
 #引入视图
 from views import index,home,db,db_sqlalchemy
+from route import route_sqlalchemy,route_sql_yuansheng
 #配置文件
 import config
 import  os
@@ -77,34 +78,34 @@ class MyAppliction(web.Application):
             web.url(r'/moban.html', home.HomeMoBanHandler),
 
  # ------------------使用原生操作数据库--------------------------------------------------------
-            #查询一条和多条
-            #http://localhost:8000/findUserById
-            web.url(r'/findUserById',db.findUserById),
-            #插入
-            web.url(r'/insert', db.insertHandler),
-            #修改
-            #http://localhost:8000/update
-            web.url(r'/update', db.updateHandler),
-            #删除
-            web.url(r'/delete', db.deleteHandler),
-            #联合查询
-            #http://localhost:8000/findCateById
-            web.url(r'/findCateById', db.findCateByIdHandler),
+ #            #查询一条和多条
+ #            #http://localhost:8000/findUserById
+ #            web.url(r'/findUserById',db.findUserById),
+ #            #插入
+ #            web.url(r'/insert', db.insertHandler),
+ #            #修改
+ #            #http://localhost:8000/update
+ #            web.url(r'/update', db.updateHandler),
+ #            #删除
+ #            web.url(r'/delete', db.deleteHandler),
+ #            #联合查询
+ #            #http://localhost:8000/findCateById
+ #            web.url(r'/findCateById', db.findCateByIdHandler),
 #------------------使用sqlalchemy框架操作数据库--------------------------------------------------------
-            #使用sqlalchemy框架操作数据库-创建所有表 http://localhost:8000/creteTable
-            web.url(r'/creteTable', db_sqlalchemy.creteTableHandler),
-            # deleteAll-删除所有表
-            web.url(r'/deleteTable', db_sqlalchemy.deleteTableHandler),
-            # add操作
-            web.url(r'/addStudent', db_sqlalchemy.addStudentHandler),
-            # addAll操作
-            web.url(r'/addAllStudent', db_sqlalchemy.addAllStudentHandler),
-            #update操作
-            web.url(r'/update', db_sqlalchemy.UpdateHandler),
-            # update操作
-            web.url(r'/update', db_sqlalchemy.UpdateHandler),
-            #各种查询
-            web.url(r'/find', db_sqlalchemy.FindHandler),
+            # #使用sqlalchemy框架操作数据库-创建所有表 http://localhost:8000/creteTable
+            # web.url(r'/creteTable', db_sqlalchemy.creteTableHandler),
+            # # deleteAll-删除所有表
+            # web.url(r'/deleteTable', db_sqlalchemy.deleteTableHandler),
+            # # add操作
+            # web.url(r'/addStudent', db_sqlalchemy.addStudentHandler),
+            # # addAll操作
+            # web.url(r'/addAllStudent', db_sqlalchemy.addAllStudentHandler),
+            # #update操作
+            # web.url(r'/update', db_sqlalchemy.UpdateHandler),
+            # # update操作
+            # web.url(r'/update', db_sqlalchemy.UpdateHandler),
+            # #各种查询
+            # web.url(r'/find', db_sqlalchemy.FindHandler),
 
             #默认index.html路径，这里不知道为啥找不到index.html,还是第一行使用自己写的默认路由好用
             #StaticFileHandler是系统提供的，专门给静态文件提供的一个路由
@@ -114,6 +115,11 @@ class MyAppliction(web.Application):
             # 如果写http://localhost:8000/admin.html，去招admin.html
             # (r'/', web.StaticFileHandler,{'path':os.path.join(config.base_dirs+'/static/html'),'default_filename':'index.html'}),
         ]
+        # -----使用原生操作数据库---------
+        handlers.extend(route_sql_yuansheng.list)
+        # -----使用sqlalchemy框架操作数据库-------------
+        handlers.extend(route_sqlalchemy.list)
+
         # print('ospath='+os.path.join(config.base_dirs+'/static/html'))
         # 映射路由
         #C:\pythonWorkspace\tornaTest02\static
