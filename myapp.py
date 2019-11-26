@@ -76,7 +76,7 @@ class MyAppliction(web.Application):
             # 模板-jstl
             web.url(r'/moban.html', home.HomeMoBanHandler),
 
-
+ # ------------------使用原生操作数据库--------------------------------------------------------
             #查询一条和多条
             #http://localhost:8000/findUserById
             web.url(r'/findUserById',db.findUserById),
@@ -90,7 +90,7 @@ class MyAppliction(web.Application):
             #联合查询
             #http://localhost:8000/findCateById
             web.url(r'/findCateById', db.findCateByIdHandler),
-
+#------------------使用sqlalchemy框架操作数据库--------------------------------------------------------
             #使用sqlalchemy框架操作数据库-创建所有表 http://localhost:8000/creteTable
             web.url(r'/creteTable', db_sqlalchemy.creteTableHandler),
             # deleteAll-删除所有表
