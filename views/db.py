@@ -16,8 +16,9 @@ class findUserById(web.RequestHandler):
         results =DBMysql.findSingle("select * from omo_user where mobile='13960291731'")
         self.write(json.dumps(results))
         self.write('<br>-------------------------------<br>')
-        # 查询多条
+        # 查询多条 得到的是list字典类型
         results = DBMysql.findMulti("select * from omo_user")
+        print('results=',results)
         self.write(json.dumps(results))
 
 
