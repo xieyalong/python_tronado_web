@@ -241,6 +241,19 @@ def find():
     ret = session.query(Resource).filter(_in).all()
     print('子查询 size=', len(ret))
 
+def find2():
+    ret=session.query(Cate).filter(Cate.cate_name=='颈部').all()
+    _str =strUtil.listClassToJson(ret)
+    print('转json=',_str)
+    list=strUtil.josnToListClass(_str)
+    print('转list实体bean=', list)
+    for cate in list:
+        print(cate.cate_name)
+
+
+
+
+
 
 
 if __name__ == '__main__':
@@ -250,9 +263,10 @@ if __name__ == '__main__':
     ## 删除所有表
     # models.delete_db()
     # add()
-    find()
     # delete()
     # delete2()
     # update1()
     # update2()
+    # find()
+    find2()
     pass

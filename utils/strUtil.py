@@ -62,10 +62,11 @@ def classToJson(objClass):
     str_ = json.dumps(map,ensure_ascii=False)
     return str_
 
-#实体bean list转成json
-def  listClassToJson(listData):
+#list实体bean转成json
+#listData=list实体bean
+def  listClassToJson(listClass):
     list=[]
-    for item in listData:
+    for item in listClass:
         map = item.__dict__
         map = dict(map)
         # 从数据库查询，去掉_sa_instance_state
@@ -75,15 +76,27 @@ def  listClassToJson(listData):
         list.append(map)
     return  json.dumps(list,ensure_ascii=False)
 
+
 class Dict(dict):
     __setattr__ = dict.__setitem__
     __getattr__ = dict.__getitem__
 
+# josn转实体bean对象
+def josnToClass(_str):
+    map = json.loads(_str)
+    clas=Dict(map)
+    return  clas
 
 
-def josnToClass(jsonStr):
-    map = strToDict(jsonStr)
-    print('map==',map)
-    return  Dict(map)
+#json字符串转list实体bean对象
+# list=strUtil.josnToListClass(_str)
+# print(list[0].cate_name)
+def josnToListClass(_str):
+    list=[]
+    listMap=json.loads(_str)
+    for i in range(0,len(listMap)):
+        map=Dict(listMap[i])
+        list.append(map)
+    return list
 
 
