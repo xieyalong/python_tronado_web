@@ -2,8 +2,8 @@
 #导入tornado 各个模块
 from tornado import  web,ioloop,httpserver,process
 #引入视图
-from views import index,home,db,dbSqlalchemyHandler
-from route import route_sqlalchemy,route_sql_yuansheng
+from views import indexHandler,homeHandler,dbHandler,dbSqlalchemyHandler
+from route import route_sqlalchemy,route_sql
 #配置文件
 import config
 import  os
@@ -15,35 +15,35 @@ class MyAppliction(web.Application):
             # 默认走index http://localhost:8080/
             #如果写http://localhost:8080/index会报错
             # 一个路由包含get和post请求，但是得重写post 和get两个函数
-            (r'/', index.IndexHandler),
+            (r'/', indexHandler.IndexHandler),
             #请求路径:http://localhost:8080/index2
             #{'a':'','b':''} 传递是死的请求参数,但必须有initialize来接收
-            (r'/index2', index.IndexHandler2,{'a':'','b':''}),
+            (r'/index2', indexHandler.IndexHandler2, {'a': '', 'b': ''}),
             # http: // localhost: 8080 / home
-            (r'/home', home.HomeHandler),
+            (r'/home', homeHandler.HomeHandler),
             #多层或者根据模块起名字 http://localhost:8080/home/list/
-            (r'/home/list/', home.HomeListHandler),
+            (r'/home/list/', homeHandler.HomeListHandler),
             # 加载html页面
-            web.url(r'/html/index.html', index.HtmlHandler),
+            web.url(r'/html/index.html', indexHandler.HtmlHandler),
             # 加载html页面 另一种写法
-            web.url(r'/html', index.HtmlHandler),
+            web.url(r'/html', indexHandler.HtmlHandler),
             #登录接口： http://localhost:8080/login?name=张三&pwd=123456
             #一个路由可以有post和get两种方式
-            (r'/login', index.LoginHandler),
+            (r'/login', indexHandler.LoginHandler),
             #动态设置相应头部信息，自定义头部信息
             #返回json
-            (r'/jsonHeader', index.JsonHeaderHandler),
+            (r'/jsonHeader', indexHandler.JsonHeaderHandler),
             #设置默认相应头部信息
             # http: // localhost: 8080 / setHeader
-            (r'/setHeader', index.SetHeaderHandler),
+            (r'/setHeader', indexHandler.SetHeaderHandler),
             #设置相应状态码
-            (r'/statusCode', index.StatusCodeHandler),
+            (r'/statusCode', indexHandler.StatusCodeHandler),
             #重定向
-            (r'/chongDingXiang', index.ChongDingXiangHandler),
+            (r'/chongDingXiang', indexHandler.ChongDingXiangHandler),
             # 重定向结果页
-            (r'/chongDingXiangUrl', index.ChongDingXiangUrlHandler),
+            (r'/chongDingXiangUrl', indexHandler.ChongDingXiangUrlHandler),
             # 错误处理：http://192.168.1.62:8080/error?flag=1
-            (r'/error', index.ErrorHandler),
+            (r'/error', indexHandler.ErrorHandler),
             # 反向解析，推荐使用这种,
             # http://192.168.1.62:8080/fanXingJieXi
             # name属性只是一个url的唯一标识
@@ -51,31 +51,31 @@ class MyAppliction(web.Application):
             #只要'key_fxjx2'还在，FanXingJieXiHandler还是能找到修改后的url路径
             #具体代码看index.FanXingJieXiHandler，
             #客户端请求还是使用http://192.168.1.62:8080/fanXingJieXi
-            web.url(r'/fanXingJieXi', index.FanXingJieXiHandler, name='key_fxjx'),
-            web.url(r'/fanXingJieXi2', index.FanXingJieXiHandler, name='key_fxjx2'),
+            web.url(r'/fanXingJieXi', indexHandler.FanXingJieXiHandler, name='key_fxjx'),
+            web.url(r'/fanXingJieXi2', indexHandler.FanXingJieXiHandler, name='key_fxjx2'),
             #url特定的uri路径解析传值,使用正则匹配,
             #http://192.168.1.62:8080/loginUri/com/xyl/login
             #com/xyl/login是三个参数，只要符合正则规则就行
             #也可以是http://192.168.1.62:8080/loginUri/a/b/c
-            (r'/loginUri/(\w+)/(\w+)/(\w+)', index.LoginUriHandler),
+            (r'/loginUri/(\w+)/(\w+)/(\w+)', indexHandler.LoginUriHandler),
 
             #get_query_argument方式获取请求参数
             #post和get
-            web.url(r'/query_argument', index.get_query_argumentHandler),
+            web.url(r'/query_argument', indexHandler.get_query_argumentHandler),
             #登录页面
-            web.url(r'/login_html', index.HtmlLoginHandler),
+            web.url(r'/login_html', indexHandler.HtmlLoginHandler),
             #请求详情信息获取请求参数
             #请求来的东西 都可以获取
-            web.url(r'/requestInfo', index.RequestInfoHandler),
+            web.url(r'/requestInfo', indexHandler.RequestInfoHandler),
             #上传页面
-            web.url(r'/upfile.html', index.UPFileHandler),
-            web.url(r'/upfile', index.UPFileHandler),
+            web.url(r'/upfile.html', indexHandler.UPFileHandler),
+            web.url(r'/upfile', indexHandler.UPFileHandler),
             #刷新缓冲区，关闭本次请求通道
-            web.url(r'/huanCunQu', index.HuanCunQuHandler),
+            web.url(r'/huanCunQu', indexHandler.HuanCunQuHandler),
             #请求顺序
-            web.url(r'/jieKouShunXu', index.JieKouShunXuHander),
+            web.url(r'/jieKouShunXu', indexHandler.JieKouShunXuHander),
             # 模板-jstl
-            web.url(r'/moban.html', home.HomeMoBanHandler),
+            web.url(r'/moban.html', homeHandler.HomeMoBanHandler),
 
  # ------------------使用原生操作数据库--------------------------------------------------------
  #            #查询一条和多条
@@ -116,7 +116,7 @@ class MyAppliction(web.Application):
             # (r'/', web.StaticFileHandler,{'path':os.path.join(config.base_dirs+'/static/html'),'default_filename':'index.html'}),
         ]
         # -----使用原生操作数据库---------
-        handlers.extend(route_sql_yuansheng.list)
+        handlers.extend(route_sql.list)
         # -----使用sqlalchemy框架操作数据库-------------
         handlers.extend(route_sqlalchemy.list)
 
