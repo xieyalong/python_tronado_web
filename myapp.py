@@ -3,7 +3,7 @@
 from tornado import  web,ioloop,httpserver,process
 #引入视图
 from views import indexHandler,homeHandler,dbHandler,dbSqlalchemyHandler
-from route import routeSqlalchemy,routeSql
+from route import routeSqlalchemy,routeSql,routeCookie
 #配置文件
 import config
 import  os
@@ -119,6 +119,8 @@ class MyAppliction(web.Application):
         handlers.extend(routeSql.list)
         # -----使用sqlalchemy框架操作数据库-------------
         handlers.extend(routeSqlalchemy.list)
+        # -----cookie操作-------------
+        handlers.extend(routeCookie.list)
 
         # print('ospath='+os.path.join(config.base_dirs+'/static/html'))
         # 映射路由

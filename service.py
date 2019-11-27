@@ -25,7 +25,7 @@ if __name__ == '__main__':
     #关闭服务器使用tornado.process.fork_processes(),在windows下会报错
     # hs.start(10)
     #在windows下启动
-    hs.start()
+    hs.start(1)
     #开启loop读取epoll的存储的请求信息
     ioloop.IOLoop.current().start()
     print('此程序不会走')

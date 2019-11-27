@@ -43,6 +43,8 @@ settings={
 
     #关闭自动转义
     'autoescape':None,
+    #coookie秘钥,就是随机的字符串,尽量生成秘钥
+    'cookie_secret':'ksjdfkjkdsjfks',
 }
 
 mysql={
