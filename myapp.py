@@ -3,7 +3,7 @@
 from tornado import  web,ioloop,httpserver,process
 #引入视图
 from views import indexHandler,homeHandler,dbHandler,dbSqlalchemyHandler
-from route import route_sqlalchemy,route_sql
+from route import routeSqlalchemy,routeSql
 #配置文件
 import config
 import  os
@@ -116,9 +116,9 @@ class MyAppliction(web.Application):
             # (r'/', web.StaticFileHandler,{'path':os.path.join(config.base_dirs+'/static/html'),'default_filename':'index.html'}),
         ]
         # -----使用原生操作数据库---------
-        handlers.extend(route_sql.list)
+        handlers.extend(routeSql.list)
         # -----使用sqlalchemy框架操作数据库-------------
-        handlers.extend(route_sqlalchemy.list)
+        handlers.extend(routeSqlalchemy.list)
 
         # print('ospath='+os.path.join(config.base_dirs+'/static/html'))
         # 映射路由
