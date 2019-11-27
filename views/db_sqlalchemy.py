@@ -3,11 +3,11 @@
 
 from tornado.web import  RequestHandler
 #引入模型，数据库连接
-from shujuku.db_sqlalchemy import models,conn
-from shujuku.db_sqlalchemy.models import Student,Cate,Resource
-from shujuku.db_sqlalchemy.conn import  session
+from db_sqlalchemy import models,conn
+from db_sqlalchemy import Cate,Resource
+from db_sqlalchemy import  session
 #where语法
-from sqlalchemy import  not_,or_,and_,text
+from sqlalchemy import or_,and_,text
 from sqlalchemy.sql import func
 from utils import strUtil
 
@@ -31,7 +31,7 @@ class addStudentHandler(RequestHandler):
     def get(self):
         try:
             #创建数据
-            stu=models.Student()
+            stu= models.Student()
             stu.s_age=45
             stu.s_name='李四66'
             stu.title='标题title'
@@ -49,7 +49,7 @@ class addAllStudentHandler(RequestHandler):
         try:
             stus=[]
             #创建数据
-            stu=models.Student()
+            stu= models.Student()
             stu.s_age=45
             stu.s_name='李四9'
             stu.title='标题title'
@@ -72,7 +72,7 @@ class deleteByStudentIdHandler(RequestHandler):
     def get(self):
         try:
             #创建数据
-            stu=models.Student()
+            stu= models.Student()
             stu.s_age=45
             stu.s_name='李四66'
             stu.title='标题title'

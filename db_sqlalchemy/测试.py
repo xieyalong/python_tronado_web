@@ -1,13 +1,12 @@
 
 #测试
 
-import  json
 #导入模型,连接
-from shujuku.db_sqlalchemy import models,conn
-from shujuku.db_sqlalchemy.models import Student,Cate,Resource
-from shujuku.db_sqlalchemy.conn import  session
+from db_sqlalchemy import models,conn
+from db_sqlalchemy import Cate,Resource
+from db_sqlalchemy import  session
 #where语法
-from sqlalchemy import  not_,or_,and_,text
+from sqlalchemy import or_,and_,text
 from sqlalchemy.sql import func
 from utils import strUtil
 
@@ -86,7 +85,7 @@ def find():
 
 #-----------查询所有-----------------------
     #“all()”的使用
-    list=conn.session.query(Cate).all()
+    list= conn.session.query(Cate).all()
     print('查询所有 size=', len(list))
     print('查询所有 size=', strUtil.listClassToJson(list))
     # for item in list:

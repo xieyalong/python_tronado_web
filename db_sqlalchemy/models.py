@@ -3,10 +3,10 @@
 
 
 #创建表字段信息
-from sqlalchemy import Column,Integer,String,DateTime,Float,Text,Index
+from sqlalchemy import Column,Integer,String,DateTime, Text
 #获取数据库连接
-from shujuku.db_sqlalchemy import conn
-from shujuku.db_sqlalchemy.conn import Base
+from db_sqlalchemy import conn
+from db_sqlalchemy import Base
 
 from datetime import datetime
 
