@@ -2,7 +2,7 @@
 #导入tornado 各个模块
 from tornado import  web,ioloop,httpserver,process
 #引入视图
-from views import index,home,db,db_sqlalchemy
+from views import index,home,db,dbSqlalchemyHandler
 from route import route_sqlalchemy,route_sql_yuansheng
 #配置文件
 import config

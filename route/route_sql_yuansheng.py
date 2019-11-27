@@ -1,5 +1,5 @@
 from tornado import  web,ioloop,httpserver
-from views import index,home,db,db_sqlalchemy
+from views import index,home,db,dbSqlalchemyHandler
 list=[
     # 查询一条和多条
     # http://localhost:8000/findUserById
