@@ -20,8 +20,12 @@ if __name__ == '__main__':
     print('输出配置文件的端口=',post,'---配置的参数list=',arr)
 
     hs.bind(post)
-    #启动一个进程，处理请求
-    hs.start(1)
+    #启动10个进程，处理请求,在liunx下不会报错，但在windows下会报错
+    #tornado就是使用在linux下的web服务器，因为借助liunx的IOLoop
+    #关闭服务器使用tornado.process.fork_processes(),在windows下会报错
+    # hs.start(10)
+    #在windows下启动
+    hs.start()
     #开启loop读取epoll的存储的请求信息
     ioloop.IOLoop.current().start()
     print('此程序不会走')
