@@ -14,6 +14,7 @@ rows = booksheet.rows
 #获取sheet页的列数据
 columns = booksheet.columns
 
+print(rows)
 i = 0
 # 迭代所有的行
 for row in rows:
