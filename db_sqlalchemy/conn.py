@@ -18,7 +18,7 @@ from config import  mysql
 # db_url='mysql+pymysql://root:@127.0.0.1:3306/xyl_test'
 # db_url='mysql+pymysql://root:@127.0.0.1:3306/jundui'
 # db_url='mysql+pymysql://root:@127.0.0.1:3306/omo_military'
-db_url='mysql+pymysql://'+mysql['user']+':'+mysql['password']+'@'+mysql['host']+':'+str(mysql['port'])+'/'+mysql['db1']
+db_url='mysql+pymysql://'+mysql['user']+':'+mysql['password']+'@'+mysql['host']+':'+str(mysql['port'])+'/'+mysql['db2']
 #建立连接
 engine=create_engine(db_url,
                      encoding='utf-8',

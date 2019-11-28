@@ -3,8 +3,8 @@
 
 #导入模型,连接
 from db_sqlalchemy import models,conn
-from db_sqlalchemy import Cate,Resource
-from db_sqlalchemy import  session
+from db_sqlalchemy.models import Cate,Resource
+from db_sqlalchemy.conn import  session
 #where语法
 from sqlalchemy import or_,and_,text
 from sqlalchemy.sql import func
