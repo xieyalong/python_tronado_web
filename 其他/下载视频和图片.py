@@ -195,6 +195,7 @@ def downloadVideo_dbUtil(sqlstr,tableName):
 if __name__ == "__main__":
     # downloadVideo('omo_resource')
     # downloadVideo('omo_pe_cate')
+    #下载option字段的图片
     downloadVideo_dbUtil('select * FROM omo_pe_question where cate_id=204','omo_pe_question')
 
     print('=========完成=========')
