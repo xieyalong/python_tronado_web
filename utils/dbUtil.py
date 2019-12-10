@@ -12,6 +12,10 @@ import  config
 #                              database='omo_military',
 #                              charset='utf8',
 #                              port=3306)
+#使用方法
+# from  utils.dbUtil import DBMysql
+# results = DBMysql.findSingle("select * from omo_user where mobile='13960291731'")
+# results = DBMysql.findMulti("select * from omo_user")
 class DBMysql():
     db=None
     cursor=None

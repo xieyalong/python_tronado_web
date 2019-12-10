@@ -1,6 +1,7 @@
 
 
-
+from  utils.dbUtil import DBMysql
+from  utils import  strUtil
 # 导入pymysql模块
 import  pymysql
 import  json
@@ -48,7 +49,11 @@ def saveVideo(url):
     else:
         print(resourceName, '存在')
 
-#视频下载
+#图片下载
+#解析格式：
+# url = 'https://img00.yuanxinkangfu.com/avthumb2/file/resource/20196/1561804143711.mp4';
+# https://img00.yuanxinkangfu.com/file/resource/20191/1547024518714.png
+# https://img00.yuanxinkangfu.com/file/resource/20194/1556499796276.png
 def saveImg(url):
     # print('url=',url)
 
@@ -78,7 +83,37 @@ def saveImg(url):
             print(resourceName, '下载完成')
     else:
         print(resourceName, '存在')
-###########下载视频#################################
+
+#解析omo_pe_question表的option字段的图片
+#格式：https://img00.yuanxinkangfu.com/file/resource/20194/1556499796276.png
+# def saveImg_omo_pe_question(url):
+#     # print('url=',url)
+#
+#
+#     pathRoot = 'C://com.yxkf.troops//'
+#
+#     fileName = url[url.rfind('/') + 1:len(url)]
+#     print('资源文件名称=', fileName)
+#
+#     # 获取文件夹
+#     fileDir = url[url.index('/resource/') + 1:url.rfind('/')]
+#     print('资源文件夹=', fileDir)
+#
+#     # 创建文件夹
+#     pathDir = pathRoot + fileDir
+#     if not os.path.exists(pathDir):
+#         os.makedirs(pathDir)
+#
+#     resourceName = pathRoot + fileDir + '//' + fileName
+#     print('本地资源路径=', resourceName)
+#     if not os.path.exists(resourceName):
+#         r = requests.get(url)
+#         with open(resourceName, "wb") as code:
+#             code.write(r.content)
+#             print(resourceName, '下载完成')
+#     else:
+#         print(resourceName, '存在')
+###########下载视频和图片#################################
 def downloadVideo(tableName):
     db = pymysql.connect(host='39.107.26.185',
                          user='xieyalong',
@@ -117,7 +152,9 @@ def downloadVideo(tableName):
                     # print(url_img)
                     saveImg(url_img)
                 pass
-            else:
+            elif 'omo_pe_question'==tableName:
+                print(row)
+                print('------------------')
                 pass
 
     except Exception as e:
@@ -126,10 +163,40 @@ def downloadVideo(tableName):
     # finally:
         # db_sqlalchemy.close()  # 关闭连接
 ###########################################################
+###########下载视频和图片-使用dbUtil工具下载#################################
+def downloadVideo_dbUtil(sqlstr,tableName):
+    try:
+        results = DBMysql.findMulti(sqlstr)
+        # print(results)
+        if 'omo_pe_question'==tableName:
+            for map in results:
+                _str=str(map['options'])
+                if '['==_str[0:1]:
+                    print(type(map['options']))
+                    for item in strUtil.strToList(map['options']):
+                        url=item['value']
+                        if '0'!=str(url):
+                            print(url)
+                            saveImg(url)
+                            print('-----------')
+                    pass
+                else:
+                    continue
 
+
+            pass
+            pass
+    except Exception as e:
+        print('错误 url=',e)
+        raise e
+    # finally:
+        # db_sqlalchemy.close()  # 关闭连接
+###########################################################
 if __name__ == "__main__":
-    downloadVideo('omo_resource')
-    downloadVideo('omo_pe_cate')
+    # downloadVideo('omo_resource')
+    # downloadVideo('omo_pe_cate')
+    downloadVideo_dbUtil('select * FROM omo_pe_question where cate_id=204','omo_pe_question')
+
     print('=========完成=========')
 
 
