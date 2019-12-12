@@ -68,7 +68,7 @@ def jiexiti(sheet):
             listData.append(map)
                 # print('value=', line)
         index = index + 1
-    print('题=',listData)
+    print('题=',json.dumps(listData))
     return listData
 
 #解析选择项
