@@ -136,7 +136,7 @@ def xzxfun(question_id,xzxArr):
             return item
 
 if __name__ == '__main__':
-    path=config.base_dirs+'\\其他\\excel\\基础评估-处理后.xlsm'
+    path=config.base_dirs+'\\其他\\基础评估\\excel\\基础评估-初筛.xlsm'
     print(path)
     # 加载excel文件
     workbook = load_workbook(path)
