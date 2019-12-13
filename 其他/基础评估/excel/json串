@@ -1,0 +1,38 @@
+
+{
+基础评估分类\r\nSELECT * from omo_stat_groupname": [
+	{
+		"id" : 1,
+		"group_name" : "基本情况"
+	}
+]}
+
+{
+"-- 基础评估题\r\nSELECT * from omo_stat_question where group_id=1": [
+	{
+		"id" : 1,
+		"question_name" : "入伍时间？",
+		"state" : 1,
+		"sort" : 1,
+		"gender" : '0=其他，1=男，2=女',
+		"age_min" : 0,
+		"age_max" : 0,
+		"group_id" : 1,
+		"updated" : 0,
+		"created" : 0
+		"type":'1=填空题，2=选择题'
+	}
+]}
+{
+"-- 基础评估题选择题\r\nSELECT * from omo_stat_question_options where question_id=1": [
+	{
+		"id" : 1,
+		"question_id" : 1,
+		"option_name" : "A. 小于1年",
+		"option_score" : 2,
+		"deleted" : 0,
+		"updated" : 0,
+		"created" : 0,
+		"isexit":'1=终止答题,0=继续答题'
+	}
+]}

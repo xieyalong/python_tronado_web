@@ -35,7 +35,12 @@ def fenzu(sheet):
             listData.append(map)
                 # print('value=', line)
         index = index + 1
-    print('组=',listData)
+    data=json.dumps(listData,ensure_ascii=False)
+    path=config.base_dirs+'\\其他\\基础评估\\omo_stat_groupname.json'
+    with open(path, 'w', encoding="utf-8") as f:
+        f.write(data)
+    print('组=',data)
+    print('---------------------------------------------')
     return listData
 
 #解析题
@@ -68,7 +73,13 @@ def jiexiti(sheet):
             listData.append(map)
                 # print('value=', line)
         index = index + 1
-    print('题=',json.dumps(listData))
+
+    data = json.dumps(listData, ensure_ascii=False)
+    path = config.base_dirs + '\\其他\\基础评估\\omo_stat_question.json'
+    with open(path, 'w', encoding="utf-8") as f:
+        f.write(data)
+    print('题=',data)
+    print('---------------------------------------------')
     return listData
 
 #解析选择项
@@ -101,7 +112,12 @@ def xzx(sheet):
             listData.append(map)
                 # print('value=', line)
         index = index + 1
-    print('选择项=',listData)
+    data = json.dumps(listData, ensure_ascii=False)
+    path = config.base_dirs + '\\其他\\基础评估\\omo_stat_question_options.json'
+    with open(path, 'w', encoding="utf-8") as f:
+        f.write(data)
+    print('选择项=',data)
+    print('---------------------------------------------')
     return listData
 
 #组
@@ -136,7 +152,7 @@ def xzxfun(question_id,xzxArr):
             return item
 
 if __name__ == '__main__':
-    path=config.base_dirs+'\\其他\\基础评估\\excel\\基础评估-初筛.xlsm'
+    path=config.base_dirs+'\\其他\\基础评估\\excel\\基础评估-初筛-表.xlsm'
     print(path)
     # 加载excel文件
     workbook = load_workbook(path)
