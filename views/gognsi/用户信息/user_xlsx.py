@@ -74,7 +74,7 @@ def dispose(listData):
         # if None == item['name']:
         #     item['name'] = ''
         print('itme=',item)
-
+    return  listData
 
 
 def mian():
@@ -85,7 +85,7 @@ def mian():
     # 获取所有sheet的名称
     sheets = workbook.worksheets
     print('sheet文件=', sheets)
-    dispose(xlsx(sheets[0]))
+    return dispose(xlsx(sheets[0]))
 
 
 if __name__ == '__main__':

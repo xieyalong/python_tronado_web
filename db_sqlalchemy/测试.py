@@ -255,8 +255,24 @@ def find2():
 
 
 
-if __name__ == '__main__':
+def add(age,user_name,name,type,parent_id,height,weight,birthday):
+    u = models.omo_military_user()
+    u.age
+    u.user_name=user_name
+    u.name=name
+    u.type=type
+    u.parent_id=parent_id
+    u.height=height
+    u.weight=weight
+    u.birthday=birthday
 
+    # 添加数据,如果有此数据就修改，没有此数据就添加
+    conn.session.add(u)
+    # 提交数据
+    conn.session.commit()
+
+if __name__ == '__main__':
+    add(1, '1', '1', 1, '1', 1, 1,'1')
     ## 创建所有表
     # models.create_db()
     ## 删除所有表

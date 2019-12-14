@@ -2,8 +2,8 @@
 #导入tornado 各个模块
 from tornado import  web,ioloop,httpserver,process
 #引入视图
-from views import indexHandler,homeHandler,dbHandler,dbSqlalchemyHandler
-from route import routeSqlalchemy,routeSql,routeCookie
+from views import indexHandler,homeHandler,dbHandler,dbSqlalchemyHandler,gongsiHandler
+from route import routeSqlalchemy,routeSql,routeCookie,routeGongsi
 #配置文件
 import config
 import  os
@@ -121,6 +121,7 @@ class MyAppliction(web.Application):
         handlers.extend(routeSqlalchemy.list)
         # -----cookie操作-------------
         handlers.extend(routeCookie.list)
+        handlers.extend(routeGongsi.list)
 
         # print('ospath='+os.path.join(config.base_dirs+'/static/html'))
         # 映射路由

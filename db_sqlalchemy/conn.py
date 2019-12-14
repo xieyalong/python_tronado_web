@@ -19,6 +19,10 @@ from config import  mysql
 # db_url='mysql+pymysql://root:@127.0.0.1:3306/jundui'
 # db_url='mysql+pymysql://root:@127.0.0.1:3306/omo_military'
 db_url='mysql+pymysql://'+mysql['user']+':'+mysql['password']+'@'+mysql['host']+':'+str(mysql['port'])+'/'+mysql['db2']
+
+
+# mysql+pymysql://root:***@127.0.0.1:3306/omo_military
+db_url='mysql+pymysql://root:@127.0.0.1:3306/jiexi'
 #建立连接
 engine=create_engine(db_url,
                      encoding='utf-8',
@@ -28,7 +32,7 @@ engine=create_engine(db_url,
                      pool_timeout=30,#池中没有连接等待的时间,否则报错
                      pool_recycle=-1#多久对线程池中的线程进行一次连接的回收，-1不回收，始终用原来那个
                      )
-
+print('数据库连接信息',engine)
 # 模型与数据库表关联
 Base=declarative_base()
 

@@ -88,6 +88,7 @@ class Resource(Base):
     type = Column(Integer)
 
 class omo_military_user(Base):
+    __tablename__ = 'omo_military_user'
     id = Column(Integer, primary_key=True, autoincrement=True)
     age=Column(Integer)
     user_name=Column(Text)
