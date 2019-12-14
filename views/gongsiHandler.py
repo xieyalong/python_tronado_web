@@ -37,20 +37,4 @@ class  AddUser(RequestHandler):
             conn.session.commit()
         # self.write(strUtil.toJson(ux.mian()))
         self.write('------------------------')
-    def a(self):
-        pass
-    def add(self,user_name, name, type, parent_id, height, weight, birthday):
-        pass
-        # u = models.omo_military_user()
-        # u.user_name = user_name
-        # u.name = name
-        # u.type = type
-        # u.parent_id = parent_id
-        # u.height = height
-        # u.weight = weight
-        # u.birthday = birthday
-        #
-        # # 添加数据,如果有此数据就修改，没有此数据就添加
-        # conn.session.add(u)
-        # # 提交数据
-        # conn.session.commit()
+
