@@ -87,6 +87,24 @@ class Resource(Base):
     content=Column(Text)
     type = Column(Integer)
 
+class omo_military_user(Base):
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    age=Column(Integer)
+    user_name=Column(Text)
+    name=Column(Text)
+    #角色
+    type=Column(Integer)
+    parent_id=Column(Text)
+    height=Column(Integer)
+    weight=Column(Integer)
+    birthday=Column(Text)
+
+
+
+
+
+
+
 
 
 # {
