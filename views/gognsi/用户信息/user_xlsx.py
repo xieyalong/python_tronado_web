@@ -55,6 +55,7 @@ def xlsx(sheet):
 
 def dispose(listData):
     for item in listData:
+
         birthday = item['birthday']
         if None!=birthday:
             birthday=birthday.strftime('%Y-%m-%d')
@@ -65,7 +66,7 @@ def dispose(listData):
 
         if '......'==item['parent_id'] or None ==item['parent_id']:
             item['parent_id'] = ''
-
+        item['type']=0
         # if None == item['user_name']:
         #     item['user_name'] = ''
         #
@@ -85,7 +86,9 @@ def mian():
     # 获取所有sheet的名称
     sheets = workbook.worksheets
     print('sheet文件=', sheets)
-    return dispose(xlsx(sheets[0]))
+    data=dispose(xlsx(sheets[0]))
+    print('len=',len(data))
+    return data
 
 
 if __name__ == '__main__':
