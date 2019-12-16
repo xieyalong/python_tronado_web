@@ -25,7 +25,7 @@ class DecimalEncoder(json.JSONEncoder):
 def saveVideo(url):
     # url = 'https://img00.yuanxinkangfu.com/file/resource/201811/1543461141561.jpeg';
 
-    pathRoot = 'C://com.yxkf.troops//'
+    pathRoot = 'D://com.yxkf.troops//'
 
     fileName = url[url.rfind('/') + 1:len(url)]
     print('资源文件名称=', fileName)
@@ -60,7 +60,7 @@ def saveImg(url):
     # url = 'https://img00.yuanxinkangfu.com/avthumb2/file/resource/20196/1561804143711.mp4';
     # https://img00.yuanxinkangfu.com/file/resource/20191/1547024518714.png
 
-    pathRoot = 'C://com.yxkf.troops//'
+    pathRoot = 'D://com.yxkf.troops//'
 
     fileName = url[url.rfind('/') + 1:len(url)]
     print('资源文件名称=', fileName)
