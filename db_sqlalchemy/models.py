@@ -3,7 +3,7 @@
 
 
 #创建表字段信息
-from sqlalchemy import Column,Integer,String,DateTime, Text
+from sqlalchemy import Column, Integer, String, DateTime, Text, Float
 #获取数据库连接
 from  db_sqlalchemy.conn import  Base
 from  db_sqlalchemy import  conn
@@ -90,15 +90,15 @@ class Resource(Base):
 class omo_military_user(Base):
     __tablename__ = 'omo_military_user'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    age=Column(Integer)
+    # age=Column(Integer)
     user_name=Column(Text)
     name=Column(Text)
     #角色
     type=Column(Integer)
     parent_id=Column(Text)
-    height=Column(Integer)
-    weight=Column(Integer)
-    birthday=Column(Text)
+    height=Column(Float)
+    weight=Column(Float)
+    birthday=Column(Integer)
 
 
 

@@ -32,16 +32,21 @@ def xlsx(sheet):
             i = 0
             map={}
             for i in range(len(line)):
-                str_title=title[i]
-                map[str_title]=line[i]
+                #说明读取完毕，下面的都是空格子
+                if title[i]=='user_name' and None==line[i]:
+                    return listData
+                else:
+                    str_title = title[i]
+                    map[str_title] = line[i]
+
                 # print(str_title,line[i])
-            print('---------------------------------------------')
-            print('map',map)
+            print('map---------------------------------------------')
+            print('map=',map)
             listData.append(map)
 
         index = index + 1
-    print('------------------listData---------------------------')
-    print('listData=',listData)
+    # print('------------------listData---------------------------')
+    # print('listData=',listData)
     # print(listData)
     # data=json.dumps(listData,ensure_ascii=False)
     # print(data)
@@ -53,33 +58,25 @@ def xlsx(sheet):
     return listData
 
 
+#处理解析后的数据
 def dispose(listData):
     for item in listData:
 
-        birthday = item['birthday']
-        if None!=birthday:
-            birthday=birthday.strftime('%Y-%m-%d')
-            item['birthday']=birthday
-            # print('birthday=',birthday)
-        else:
-            item['birthday']=''
 
-        if '......'==item['parent_id'] or None ==item['parent_id']:
-            item['parent_id'] = ''
-        item['type']=0
-        # if None == item['user_name']:
-        #     item['user_name'] = ''
-        #
-        # if None == item['name']:
-        #     item['name'] = ''
-        # if None == item['name']:
-        #     item['name'] = ''
+        # print(type(birthday), str(birthday))
+        if None!=item['birthday']:
+            birthday = str(item['birthday'])
+            birthday=birthday.split(' ')[0].replace('-','')
+            item['birthday']=birthday
+        print('item=---------------------------------------------')
         print('itme=',item)
+        print('listData=',listData)
     return  listData
 
 
 def mian():
-    path = config.base_dirs + '\\其他\\用户信息\\处理.xlsx'
+    'C:\pythonWorkspace\python_tronado_web\views\gognsi\用户信息'
+    path = config.base_dirs + '\\views\gognsi\\用户信息\\秦皇岛-人员编号-处理.xlsx'
     print(path)
     # 加载excel文件
     workbook = load_workbook(path)
@@ -92,16 +89,17 @@ def mian():
 
 
 if __name__ == '__main__':
-    path=config.base_dirs+'\\其他\\用户信息\\处理.xlsx'
-    print(path)
-    # 加载excel文件
-    workbook = load_workbook(path)
-    # 获取所有sheet的名称
-    sheets = workbook.worksheets
-    print('sheet文件=',sheets)
-    dispose(xlsx(sheets[0]))
-    # for sheet in sheets:
-    #     xlsx(sheet)
+    mian()
+    # path=config.base_dirs+'\\其他\\用户信息\\处理.xlsx'
+    # print(path)
+    # # 加载excel文件
+    # workbook = load_workbook(path)
+    # # 获取所有sheet的名称
+    # sheets = workbook.worksheets
+    # print('sheet文件=',sheets)
+    # dispose(xlsx(sheets[0]))
+    # # for sheet in sheets:
+    # #     xlsx(sheet)
 
 
 

@@ -31,10 +31,10 @@ class  AddUser(RequestHandler):
             u.weight = item['weight']
             u.birthday = item['birthday']
             list.append(u)
-            # 添加数据
-            conn.session.add_all(list)
-            # 提交数据
-            conn.session.commit()
+            # # 添加数据
+            # conn.session.add_all(list)
+            # # 提交数据
+            # conn.session.commit()
         # self.write(strUtil.toJson(ux.mian()))
         self.write('------------------------')
 
