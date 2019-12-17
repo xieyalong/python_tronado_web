@@ -21,7 +21,7 @@ class DecimalEncoder(json.JSONEncoder):
 
 
 def runQql(db,sql,fileName):
-    pathRoot = 'C://com.yxkf.troops//data'
+    pathRoot = 'D://com.yxkf.troops//data'
     if not os.path.exists(pathRoot):
         os.makedirs(pathRoot)
 
@@ -101,8 +101,10 @@ if __name__ == "__main__":
     tables.append('omo_pe_treat')
     tables.append('omo_pe_treat_level')
     tables.append('omo_pe_treat_level_content_answer')
-    tables.append('omo_military_user')
+
+
     #服务器上的数据是老数据，在里不在下载
+    # tables.append('omo_military_user')
     # tables.append('omo_stat_groupname')
     # tables.append('omo_stat_question')
     # tables.append('omo_stat_question_options')
