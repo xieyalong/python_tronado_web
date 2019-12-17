@@ -62,15 +62,18 @@ def xlsx(sheet):
 def dispose(listData):
     for item in listData:
 
-
-        # print(type(birthday), str(birthday))
         if None!=item['birthday']:
             birthday = str(item['birthday'])
-            birthday=birthday.split(' ')[0].replace('-','')
-            item['birthday']=birthday
+            birthday=birthday.split(' ')[0].replace('-','').replace('/','')
+            if ''!=birthday:
+                item['birthday2']=int(birthday)
+            else:
+                item['birthday2'] =0
+        else:
+            item['birthday2'] = 0
         print('item=---------------------------------------------')
         print('itme=',item)
-        print('listData=',listData)
+        # print('listData=',listData)
     return  listData
 
 

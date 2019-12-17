@@ -23,6 +23,7 @@ db_url='mysql+pymysql://'+mysql['user']+':'+mysql['password']+'@'+mysql['host']+
 
 # mysql+pymysql://root:***@127.0.0.1:3306/omo_military
 db_url='mysql+pymysql://root:@127.0.0.1:3306/jiexi'
+db_url='mysql+pymysql://root:@127.0.0.1:3306/shibing2'
 #建立连接
 engine=create_engine(db_url,
                      encoding='utf-8',
