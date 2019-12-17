@@ -37,7 +37,7 @@ if __name__ == '__main__':
             conn.session.commit()
             index = int(index) + 1
         else:
-            print('有数据',u.user_name)
+            print('已存在',u.user_name)
         print('index=', index)
 
     print('插入完成')
