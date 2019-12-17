@@ -99,6 +99,7 @@ class omo_military_user(Base):
     height=Column(Float)
     weight=Column(Float)
     birthday=Column(Integer)
+    pwd=Column(Text)
 
 
 
