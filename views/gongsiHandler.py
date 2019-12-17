@@ -4,7 +4,7 @@ import   views.gognsi.用户信息.user_xlsx as ux
 from utils import strUtil
 #导入模型,连接
 from db_sqlalchemy import models,conn
-from db_sqlalchemy.models import Cate,Resource
+from db_sqlalchemy.models import Cate,Resource,omo_military_user
 from db_sqlalchemy.conn import  session
 #where语法
 from sqlalchemy import or_,and_,text
@@ -13,8 +13,9 @@ import  json
 
 if __name__ == '__main__':
     arr = ux.mian()
-    print(type(arr))
-    list = []
+    print('size=',len(arr))
+    # list = []
+    index=0
     for item in arr:
         print('itme=', item)
         # self.write('==='+strUtil.toJson(item))
@@ -27,13 +28,20 @@ if __name__ == '__main__':
         u.height = float(item['height'])
         u.weight = float(item['weight'])
         u.birthday = int(item['birthday2'])
-        list.append(u)
+        user=session.query(omo_military_user).filter(omo_military_user.user_name==u.user_name).first()
+        print('user=',user)
+        if None==user:
+            conn.session.add(u)
+            conn.session.commit()
+            index = int(index) + 1
+        else:
+            print('有数据',u.user_name)
+        print('index=', index)
 
-    print('listData=', len(list))
-    # 添加数据
-    conn.session.add_all(list)
-    # # 提交数据
-    conn.session.commit()
+    print('插入完成')
+
+
+
 
 
 
@@ -41,28 +49,32 @@ if __name__ == '__main__':
 #http://localhost:8000/adduser
 class  AddUser(RequestHandler):
     def get(self,*args,**kwargs):
-        arr=ux.mian()
-        print(type(arr))
-        list=[]
-        for item in  arr:
-            print('itme=',item)
+        arr = ux.mian()
+        print('size=', len(arr))
+        # list = []
+        index = 0
+        for item in arr:
+            print('itme=', item)
             # self.write('==='+strUtil.toJson(item))
             # self.add(,,,,,)
             u = models.omo_military_user()
-            u.user_name = item['user_name']
-            u.name = item.get('name')
-            u.type = item['type']
-            u.parent_id = item['parent_id']
-            u.height = item['height']
-            u.weight = item['weight']
-            u.birthday = item['birthday']
-            list.append(u)
+            u.user_name = str(item['user_name'])
+            u.name = str(item.get('name'))
+            u.type = int(item['type'])
+            u.parent_id = str(item['parent_id'])
+            u.height = float(item['height'])
+            u.weight = float(item['weight'])
+            u.birthday = int(item['birthday2'])
+            user = session.query(omo_military_user).filter(omo_military_user.user_name == u.user_name).first()
+            print('user=', user)
+            if None == user:
+                conn.session.add(u)
+                conn.session.commit()
+                index = int(index) + 1
+            else:
+                print('有数据', u.user_name)
+            print('index=', index)
 
-        print('listData=', len(list))
-        # 添加数据
-        conn.session.add_all(list)
-        # # 提交数据
-        conn.session.commit()
-        # self.write(strUtil.toJson(ux.mian()))
-        self.write('------------------------')
+        print('插入完成')
+        self.write('--------插入完成----------------')
 

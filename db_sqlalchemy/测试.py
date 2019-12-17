@@ -3,7 +3,7 @@
 
 #导入模型,连接
 from db_sqlalchemy import models,conn
-from db_sqlalchemy.models import Cate,Resource
+from db_sqlalchemy.models import Cate,Resource,omo_military_user
 from db_sqlalchemy.conn import  session
 #where语法
 from sqlalchemy import or_,and_,text
@@ -104,6 +104,8 @@ def find():
     #“first()”获取第一条数据，获取一条数据
     cate = session.query(Cate).filter(Cate.id >= 2).first()
     print('取出一条数据 cate=',cate.cate_name)
+    #查询一条
+    user = session.query(omo_military_user).filter(omo_military_user.user_name =='123456').first()
 # -----------and查询------------------------
     #“and_”使用
     _and=and_(Cate.id > 3, Cate.cate_name == '颈部',Cate.type==1)
