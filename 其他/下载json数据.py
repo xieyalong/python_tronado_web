@@ -3,6 +3,8 @@
 
 # 导入pymysql模块
 import  pymysql
+#导入sqlite3模块
+import sqlite3
 import  json
 import  decimal
 import  threading,time
@@ -84,8 +86,8 @@ def runQql(db,sql,fileName):
 #     threading.Thread(target=run_bbb, name='runThread', args=('给子进程传递的数据',))
 #     pass
 
-
-if __name__ == "__main__":
+def runMysql():
+    # ==============================服务器数据库==========================================================
     # 连接database
     # conn = pymysql.connect(host=“你的数据库地址”, user=“用户名”,password=“密码”,database=“数据库名”,charset=“utf8”)
     db = pymysql.connect(host='39.107.26.185',
@@ -93,7 +95,8 @@ if __name__ == "__main__":
                          password='xieyalong',
                          database='omo_military',
                          charset='utf8', port=3306)
-    tables=[]
+    tables = []
+    # 服务上的数据
     tables.append('omo_pe_cate')
     tables.append('omo_pe_question')
     tables.append('omo_pe_question_path')
@@ -102,24 +105,56 @@ if __name__ == "__main__":
     tables.append('omo_pe_treat_level')
     tables.append('omo_pe_treat_level_content_answer')
 
-
-    #服务器上的数据是老数据，在里不在下载
+    # 服务器上的数据是老数据，在里不在下载
     # tables.append('omo_military_user')
     # tables.append('omo_stat_groupname')
     # tables.append('omo_stat_question')
     # tables.append('omo_stat_question_options')
-
-
+    # ================开始加载===================================================================================
 
     for item in tables:
-        sql = "select * from "+item+";"
+        sql = "select * from " + item + ";"
         # print(sql)
-        fileName=item+'.json'
-        runQql(db, sql,fileName)
+        fileName = item + '.json'
+        runQql(db, sql, fileName)
         # t = threading.Thread(target=runQql, name=fileName, args=(db_sqlalchemy,sql, fileName,))
         # # 启动
         # t.start()
     db.close()
     print('-------结束-------')
+
+
+
+def runSqlite():
+    # ================sqlite的数据====================================================================
+    #pip install sqlite3
+    db = sqlite3.connect('C:\\test\\com.yxkf.troops.db')
+    print('db=',db)
+    tables = []
+    tables.append('combination')
+    tables.append('cycle_train')
+    tables.append('exam_project')
+    tables.append('multi_precaution')
+    tables.append('single_precaution')
+    tables.append('single_train')
+    for item in tables:
+        sql = "select * from " + item + ";"
+        # print(sql)
+        fileName = item + '.json'
+        runQql(db, sql, fileName)
+        # t = threading.Thread(target=runQql, name=fileName, args=(db_sqlalchemy,sql, fileName,))
+        # # 启动
+        # t.start()
+    db.close()
+    print('-------结束-------')
+
+if __name__ == "__main__":
+    runSqlite()
+
+
+
+
+
+
 
 
