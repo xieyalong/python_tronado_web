@@ -93,7 +93,7 @@ class omo_military_user(Base):
     gender=Column(Integer)
     user_name=Column(Text)
     name=Column(Text)
-    #角色
+    #角色1=医疗兵 2=士兵
     type=Column(Integer)
     parent_id=Column(Text)
     height=Column(Float)
