@@ -135,20 +135,14 @@ def runLocalhostMysql():
                          charset='utf8',
                          port=3306)
     tables = []
-    # 服务上的数据
-    # tables.append('omo_pe_cate')
-    # tables.append('omo_pe_question')
-    # tables.append('omo_pe_question_path')
-    # tables.append('omo_resource')
-    # tables.append('omo_pe_treat')
-    # tables.append('omo_pe_treat_level')
-    # tables.append('omo_pe_treat_level_content_answer')
 
-    # 服务器上的数据是老数据，在里不在下载
-    tables.append('omo_military_user')
+    # tables.append('omo_military_user')
     # tables.append('omo_stat_groupname')
     # tables.append('omo_stat_question')
     # tables.append('omo_stat_question_options')
+    tables.append('exam_project')
+    tables.append('single_train')
+
     # ================开始加载===================================================================================
 
     for item in tables:

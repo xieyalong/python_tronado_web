@@ -11,8 +11,7 @@ from sqlalchemy import or_,and_,text
 from sqlalchemy.sql import func
 import  json
 
-if __name__ == '__main__':
-    addUser()
+
 
 
 
@@ -33,12 +32,16 @@ def addUser():
         u.height = float(item['height'])
         u.weight = float(item['weight'])
         u.birthday = int(item['birthday2'])
+        u.gender=int(item['gender'])
         # 初始密码 123456
         u.pwd = 'f6e57fba8e73dbe64cc0b298c07206d7'
         if '0' == u.parent_id:
             u.type = '1'
         else:
             u.type = '2'
+
+        if None ==u.name or 'None'==u.name:
+            u.name=u.user_name
 
         user = session.query(omo_military_user).filter(omo_military_user.user_name == u.user_name).first()
         print('user=', user)
@@ -62,3 +65,6 @@ class  AddUser(RequestHandler):
         addUser()
         self.write('--------插入完成----------------')
 
+
+if __name__ == '__main__':
+    addUser()
