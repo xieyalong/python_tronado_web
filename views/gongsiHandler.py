@@ -31,11 +31,13 @@ if __name__ == '__main__':
         user=session.query(omo_military_user).filter(omo_military_user.user_name==u.user_name).first()
         print('user=',user)
         if None==user:
+            #初始密码 123456
+            u.pwd='f6e57fba8e73dbe64cc0b298c07206d7'
             conn.session.add(u)
             conn.session.commit()
             index = int(index) + 1
         else:
-            print('有数据',u.user_name)
+            print('已存在',u.user_name)
         print('index=', index)
 
     print('插入完成')
