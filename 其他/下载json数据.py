@@ -97,13 +97,15 @@ def runMysql():
                          charset='utf8', port=3306)
     tables = []
     # 服务上的数据
-    tables.append('omo_pe_cate')
-    tables.append('omo_pe_question')
-    tables.append('omo_pe_question_path')
-    tables.append('omo_resource')
-    tables.append('omo_pe_treat')
-    tables.append('omo_pe_treat_level')
-    tables.append('omo_pe_treat_level_content_answer')
+
+    tables.append('omo_pe_cate_risk')
+    # tables.append('omo_pe_cate')
+    # tables.append('omo_pe_question')
+    # tables.append('omo_pe_question_path')
+    # tables.append('omo_resource')
+    # tables.append('omo_pe_treat')
+    # tables.append('omo_pe_treat_level')
+    # tables.append('omo_pe_treat_level_content_answer')
 
     # 服务器上的数据是老数据，在里不在下载
     # tables.append('omo_military_user')
@@ -225,7 +227,8 @@ def runSqlite():
 
 if __name__ == "__main__":
     # runSqlite()
-    runLocalhostMysql()
+    # runLocalhostMysql()
+    runMysql()
 
 
 
