@@ -10,6 +10,7 @@ import  decimal
 import requests
 import  os
 import  threading,time
+import types
 ####################针对Decimal类型转换#######################################
 class DecimalEncoder(json.JSONEncoder):
     def default(self, o):
@@ -170,22 +171,22 @@ def downloadVideo_dbUtil(sqlstr,tableName):
         # print(results)
         if 'omo_pe_question'==tableName:
             for map in results:
+                print('数据表id=', map['id'])
                 _str=str(map['options'])
+                print('options=',_str)
                 if '['==_str[0:1]:
-                    print(type(map['options']))
+                    print('type(options)=',type(map['options']))
                     for item in strUtil.strToList(map['options']):
+                        if ('value'  in item.keys())==False:
+                            continue
+
                         url=item['value']
-                        if '0'!=str(url):
-                            print(url)
-                            saveImg(url)
-                            print('-----------')
-                    pass
-                else:
-                    continue
-
-
-            pass
-            pass
+                        #判断数据类型
+                        if  isinstance(url, str):
+                            b = 'https' in url
+                            if True==b:
+                                print('url=', url)
+                                saveImg(url)
     except Exception as e:
         print('错误 url=',e)
         raise e
@@ -193,10 +194,10 @@ def downloadVideo_dbUtil(sqlstr,tableName):
         # db_sqlalchemy.close()  # 关闭连接
 ###########################################################
 if __name__ == "__main__":
-    downloadVideo('omo_resource')
-    downloadVideo('omo_pe_cate')
+    # downloadVideo('omo_resource')
+    # downloadVideo('omo_pe_cate')
     #下载option字段的图片
-    downloadVideo_dbUtil('select * FROM omo_pe_question where cate_id=204','omo_pe_question')
+    downloadVideo_dbUtil('select * FROM omo_pe_question','omo_pe_question')
 
     print('=========完成=========')
 

@@ -34,22 +34,25 @@ class DBMysql():
     #打开数据库
     @staticmethod
     def open():
-        # DBMysql.connet(host='39.107.26.185',
-        #                       user='xieyalong',
-        #                       password='xieyalong',
-        #                       database='omo_military',
-        #                       charset='utf8', port=3306)
+        DBMysql.connet(host='39.107.26.185',
+                              user='xieyalong',
+                              password='xieyalong',
+                              database='omo_military',
+                              charset='utf8', port=3306)
         # DBMysql.connet(host='127.0.0.1',
         #                user='root',
         #                password='',
         #                database='jundui',
         #                charset='utf8', port=3306)
-        DBMysql.connet(host=config.mysql['host'],
-                       user=config.mysql['user'],
-                       password=config.mysql['password'],
-                       database=config.mysql['db1'],
-                       charset=config.mysql['charset'],
-                       port=config.mysql['port'])
+
+        # db = sqlite3.connect('C:\\test\\com.yxkf.troops.db')
+
+        # DBMysql.connet(host=config.mysql['host'],
+        #                user=config.mysql['user'],
+        #                password=config.mysql['password'],
+        #                database=config.mysql['db1'],
+        #                charset=config.mysql['charset'],
+        #                port=config.mysql['port'])
 
     # 断开连接
     @staticmethod

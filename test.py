@@ -1,7 +1,9 @@
 
-str='[{dfdfdf}]'
-print(str[0:1])
 
+import types
+map={"a":"A"}
+b='a' in map.keys()
+print(b)
 
 
 
