@@ -97,8 +97,8 @@ def runMysql():
                          charset='utf8', port=3306)
     tables = []
     # 服务上的数据
-
-    tables.append('omo_pe_cate_risk')
+    tables.append('omo_treat_gauge')
+    # tables.append('omo_pe_cate_risk')
     # tables.append('omo_pe_cate')
     # tables.append('omo_pe_question')
     # tables.append('omo_pe_question_path')
