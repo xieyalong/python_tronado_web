@@ -34,6 +34,9 @@ def saveVideo(url):
     # 获取文件夹
     fileDir = url[url.index('/resource/') + 1:url.rfind('/')]
     print('资源文件夹=', fileDir)
+    if '2018' in fileDir or '20191' in fileDir:
+        print('过滤老资源=',url)
+        return
 
     # 创建文件夹
     pathDir = pathRoot + fileDir
@@ -143,12 +146,20 @@ def downloadVideo(tableName):
             if 'omo_resource'==tableName:
                 url_video = row[7]
                 url_img = row[11]
+                url_img_content=row[10]
                 print(url_img)
                 if None != url_video and '' != url_video and url_video[-4:] == '.mp4' and len(url_video) > 0:
                     # print('mp4url=', url_video)
                     saveVideo(url_video)
                 if None != url_img and '' != url_img and (url_img[-5:] == '.jpeg' or url_img[-4:] == '.png') and len(url_img) > 0:
                     saveImg(url_img)
+                if 'http' in  url_img_content:
+                    arr = json.loads(url_img_content)
+                    for item in arr:
+                        print('omo_resource表content',item['url'])
+                        saveImg(item['url'])
+                    pass
+
             elif 'omo_pe_cate'==tableName:
                 url_img = row[3]
                 print(url_img)
@@ -197,8 +208,8 @@ def downloadVideo_dbUtil(sqlstr,tableName):
         # db_sqlalchemy.close()  # 关闭连接
 ###########################################################
 if __name__ == "__main__":
-    # downloadVideo('omo_resource')
-    # downloadVideo('omo_pe_cate')
+    downloadVideo('omo_resource')
+    downloadVideo('omo_pe_cate')
     #下载option字段的图片
     downloadVideo_dbUtil('select * FROM omo_pe_question','omo_pe_question')
 
