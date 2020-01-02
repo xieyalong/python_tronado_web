@@ -99,8 +99,8 @@ def runMysql():
     # 服务上的数据
     # tables.append('omo_treat_gauge')
     # tables.append('omo_pe_cate_risk')
-    # tables.append('omo_pe_cate')
-    # tables.append('omo_pe_question')
+    tables.append('omo_pe_cate')
+    tables.append('omo_pe_question')
     # tables.append('omo_pe_question_path')
     tables.append('omo_resource')
     # tables.append('omo_pe_treat')
@@ -227,8 +227,8 @@ def runSqlite():
 
 if __name__ == "__main__":
     # runSqlite()
-    runLocalhostMysql()
-    # runMysql()
+    # runLocalhostMysql()
+    runMysql()
 
 
 

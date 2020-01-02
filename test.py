@@ -1,14 +1,15 @@
 
 
 import types
-url='https://img00.yuanxinkangfu.com/file/resource/20191/1547024518714.png';
-fileName = url[url.rfind('/') + 1:len(url)]
-print('资源文件名称=', fileName)
+import  json
+url='[{"url":"https://img00.yuanxinkangfu.com/file/resource/20189/1536746229387.jpeg","des":"定位不清"},{"url":"http://img00.sun-hc.com/file/resource/20186/1529574210070.jpeg","des":"注意事项：在治疗过程中，应及时询问用户的适应程度，如出现过烫，可再垫层毛巾，注意防止烫伤。"}]'
 
-# 获取文件夹
-fileDir = url[url.index('/resource/') + 1:url.rfind('/')]
-print('资源文件夹=', fileDir)
-print('2018' in fileDir or '20191' in fileDir)
+arr=json.loads(url)
+for item in arr:
+    print(item['url'])
+
+
+
 
 
 
