@@ -69,6 +69,9 @@ def saveImg(url):
     # 获取文件夹
     fileDir = url[url.index('/resource/') + 1:url.rfind('/')]
     print('资源文件夹=', fileDir)
+    if '2018' in fileDir or '20191' in fileDir:
+        print('过滤老资源=',url)
+        return
 
     # 创建文件夹
     pathDir = pathRoot + fileDir

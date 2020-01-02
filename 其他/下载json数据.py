@@ -144,12 +144,12 @@ def runLocalhostMysql():
     # tables.append('omo_stat_question_options')
 
     #士兵2
-    tables.append('exam_project')
-    tables.append('single_train')
-    tables.append('single_precaution')
+    # tables.append('exam_project')
+    # tables.append('single_train')
+    # tables.append('single_precaution')
     tables.append('multi_precaution')
-    tables.append('combination')
-    tables.append('cycle_train')
+    # tables.append('combination')
+    # tables.append('cycle_train')
 
     # ================开始加载===================================================================================
 
