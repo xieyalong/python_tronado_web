@@ -34,9 +34,9 @@ class DBMysql():
     #打开数据库
     @staticmethod
     def open():
-        DBMysql.connet(host='39.107.26.185',
-                              user='xieyalong',
-                              password='xieyalong',
+        DBMysql.connet(host='rm-8vb4r23m73kb7kty66o.mysql.zhangbei.rds.aliyuncs.com',
+                              user='omo_military',
+                              password='Omo_military123$',
                               database='omo_military',
                               charset='utf8', port=3306)
         # DBMysql.connet(host='127.0.0.1',
