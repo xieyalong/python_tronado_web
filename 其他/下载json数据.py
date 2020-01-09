@@ -90,22 +90,23 @@ def runMysql():
     # ==============================服务器数据库==========================================================
     # 连接database
     # conn = pymysql.connect(host=“你的数据库地址”, user=“用户名”,password=“密码”,database=“数据库名”,charset=“utf8”)
-    db = pymysql.connect(host='39.107.26.185',
-                         user='xieyalong',
-                         password='xieyalong',
+    db = pymysql.connect(host='rm-8vb4r23m73kb7kty66o.mysql.zhangbei.rds.aliyuncs.com',
+                         user='omo_military',
+                         password='Omo_military123$',
                          database='omo_military',
                          charset='utf8', port=3306)
     tables = []
     # 服务上的数据
-    # tables.append('omo_treat_gauge')
-    # tables.append('omo_pe_cate_risk')
+    tables.append('omo_treat_gauge')
+    tables.append('omo_pe_cate_risk')
     tables.append('omo_pe_cate')
     tables.append('omo_pe_question')
-    # tables.append('omo_pe_question_path')
+    tables.append('omo_pe_question_path')
     tables.append('omo_resource')
-    # tables.append('omo_pe_treat')
-    # tables.append('omo_pe_treat_level')
-    # tables.append('omo_pe_treat_level_content_answer')
+    tables.append('omo_pe_treat')
+    tables.append('omo_pe_treat_level')
+    tables.append('omo_pe_treat_level_content_answer')
+    tables.append('omo_pe_question_contradiction')
 
     # 服务器上的数据是老数据，在里不在下载
     # tables.append('omo_military_user')
